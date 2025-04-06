@@ -1,26 +1,14 @@
 package com.example.myapplication;
 
 public class Task {
-    public String Title;
-    public boolean IsCompleted;
-
-    public Task(String Title){
-        this.Title=Title;
-        IsCompleted=false;
+    String description;
+    int completion;
+    public Task(String description) {
+        this.description = description;
+        this.completion = 0;
     }
-
-    public String getTitle(){
-        return Title;
-    }
-
-    public void setTitle(String Title){
-        this.Title=Title;
-    }
-    public boolean IsCompleted(){
-        return IsCompleted;
-    }
-
-    public void setCompleted(boolean Completed){
-        IsCompleted=Completed;
+    @Override
+    public String toString() {
+        return description + " (" + completion + "%)";
     }
 }
