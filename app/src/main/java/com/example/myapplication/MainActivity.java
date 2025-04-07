@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button AddTaskButton = findViewById(R.id.addTaskButton);
         Button RemoveTaskButton = findViewById(R.id.removeTaskButton);
         Button UpdateTaskButton = findViewById(R.id.updateTaskButton);
+        Button CompleteTaskButton = findViewById(R.id.CompleteTaskButton);
         ListView taskList = findViewById(R.id.taskList);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, tasks);
@@ -39,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
             int index = getSelectedIndex(taskList);
             if (index != -1) {
                 tasks.remove(index);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        CompleteTaskButton.setOnClickListener(v -> {
+            int index = getSelectedIndex(taskList);
+            if (index != -1) {
+                tasks.get(index).IsCompleted=!tasks.get(index).IsCompleted;
                 adapter.notifyDataSetChanged();
             }
         });
